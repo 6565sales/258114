@@ -1,0 +1,172 @@
+
+/* macOS Theme Styles */
+.macos-light {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: rgb(var(--macos-text-primary));
+}
+
+.macos-dark {
+  background: linear-gradient(135deg, rgb(var(--macos-bg-primary)) 0%, rgb(var(--macos-bg-secondary)) 100%);
+  color: rgb(var(--macos-text-primary));
+}
+
+/* macOS Glass Effect */
+.macos-glass {
+  background: var(--macos-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--macos-border);
+  box-shadow: 0 8px 32px var(--macos-shadow);
+  color: rgb(var(--macos-text-primary));
+}
+
+.macos-glass-button {
+  background: var(--macos-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--macos-border);
+  transition: all 0.2s ease;
+  color: rgb(var(--macos-text-primary));
+}
+
+.macos-glass-button:hover {
+  background: rgba(var(--macos-bg-secondary), 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--macos-shadow);
+}
+
+.macos-glass-dropdown {
+  background: var(--macos-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--macos-border);
+  box-shadow: 0 8px 32px var(--macos-shadow);
+  border-radius: 12px;
+  color: rgb(var(--macos-text-primary));
+}
+
+/* macOS Cards */
+.macos-card {
+  background: rgba(var(--macos-bg-primary), 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--macos-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px var(--macos-shadow);
+  color: rgb(var(--macos-text-primary));
+}
+
+/* macOS Sidebar */
+.macos-sidebar {
+  background: var(--macos-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid var(--macos-border);
+  color: rgb(var(--macos-text-primary));
+}
+
+/* macOS Button Styles */
+.macos-button {
+  background: rgba(var(--macos-blue), 1);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.macos-button:hover {
+  background: rgba(var(--macos-blue), 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--macos-blue), 0.3);
+}
+
+/* macOS Interactive Button - Texto escuro no modo claro */
+.macos-button-interactive {
+  background: rgba(var(--macos-blue), 1);
+  color: #1f2937 !important; /* Texto escuro forçado no modo claro */
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.macos-button-interactive:hover {
+  background: rgba(var(--macos-blue), 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--macos-blue), 0.3);
+}
+
+/* Modo escuro - texto branco */
+.dark .macos-button-interactive {
+  color: white !important;
+}
+
+/* macOS Text Styles - Garantir cores corretas no modo escuro */
+.macos-text-primary {
+  color: rgb(var(--macos-text-primary));
+}
+
+.macos-text-secondary {
+  color: rgb(var(--macos-text-secondary));
+}
+
+.macos-text-tertiary {
+  color: rgb(var(--macos-text-tertiary));
+}
+
+/* Correções específicas para modo escuro */
+.dark .macos-glass {
+  background: var(--macos-glass);
+  color: rgb(var(--macos-text-primary));
+}
+
+.dark .macos-card {
+  background: rgba(var(--macos-bg-primary), 0.95);
+  color: rgb(var(--macos-text-primary));
+}
+
+.dark .macos-glass-button {
+  background: var(--macos-glass);
+  color: rgb(var(--macos-text-primary));
+}
+
+.dark .macos-glass-dropdown {
+  background: var(--macos-glass);
+  color: rgb(var(--macos-text-primary));
+}
+
+.dark .macos-sidebar {
+  background: var(--macos-glass);
+  color: rgb(var(--macos-text-primary));
+}
+
+/* Garantir que todos os inputs e elementos de formulário usem cores corretas */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: rgba(var(--macos-bg-secondary), 0.8) !important;
+  color: rgb(var(--macos-text-primary)) !important;
+  border-color: var(--macos-border) !important;
+}
+
+.dark input::placeholder,
+.dark select::placeholder,
+.dark textarea::placeholder {
+  color: rgb(var(--macos-text-tertiary)) !important;
+}
+
+/* Botões e elementos interativos */
+.dark button {
+  color: rgb(var(--macos-text-primary));
+}
+
+.dark .bg-background {
+  background-color: rgb(var(--macos-bg-primary)) !important;
+}
+
+.dark .text-foreground {
+  color: rgb(var(--macos-text-primary)) !important;
+}

@@ -1,0 +1,231 @@
+
+/* macOS Interactive Effects - Simplified and Optimized */
+
+/* Base Animation Classes */
+.macos-spring-hover {
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateZ(0);
+}
+
+.macos-spring-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.macos-spring-tap {
+  transition: all 0.1s ease-out;
+}
+
+.macos-spring-tap:active {
+  transform: translateY(0px) scale(0.98);
+  transition: all 0.05s ease-out;
+}
+
+/* Button Styles */
+.macos-button-interactive {
+  background: rgba(var(--macos-blue), 1);
+  color: white !important;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.macos-button-interactive:hover {
+  background: rgba(var(--macos-blue), 0.9);
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--macos-blue), 0.3);
+}
+
+.macos-button-interactive:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 4px rgba(var(--macos-blue), 0.2);
+  color: white !important;
+}
+
+/* Glass Button */
+.macos-glass-button {
+  background: var(--macos-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--macos-border);
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: rgb(var(--macos-text-primary)) !important;
+}
+
+.macos-glass-button:hover {
+  background: rgba(var(--macos-bg-secondary), 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--macos-shadow);
+}
+
+/* Tab Styles */
+.macos-tab {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  color: rgb(var(--macos-text-secondary)) !important;
+}
+
+.macos-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(var(--macos-bg-secondary), 0.5);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.macos-tab:hover::before {
+  opacity: 1;
+}
+
+.macos-tab.active {
+  background: rgba(var(--macos-blue), 0.1);
+  color: rgb(var(--macos-blue)) !important;
+  border: 1px solid rgba(var(--macos-blue), 0.3);
+}
+
+.macos-tab.active::before {
+  opacity: 0;
+}
+
+/* Card Styles */
+.macos-card {
+  background: rgba(var(--macos-bg-primary), 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--macos-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px var(--macos-shadow);
+  color: rgb(var(--macos-text-primary)) !important;
+}
+
+.macos-card-interactive {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.macos-card-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--macos-shadow);
+}
+
+/* Glass Effects */
+.macos-glass {
+  background: var(--macos-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--macos-border);
+  color: rgb(var(--macos-text-primary)) !important;
+}
+
+.macos-glass-dropdown {
+  background: var(--macos-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--macos-border);
+  box-shadow: 0 8px 32px var(--macos-shadow);
+  border-radius: 12px;
+  color: rgb(var(--macos-text-primary)) !important;
+}
+
+/* Text Classes */
+.macos-text-primary {
+  color: rgb(var(--macos-text-primary)) !important;
+}
+
+.macos-text-secondary {
+  color: rgb(var(--macos-text-secondary)) !important;
+}
+
+.macos-text-tertiary {
+  color: rgb(var(--macos-text-tertiary)) !important;
+}
+
+/* Pulse Animation */
+.macos-pulse {
+  animation: macos-pulse 2s infinite;
+}
+
+@keyframes macos-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Dropdown Styles */
+.macos-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.95);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.macos-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.macos-dropdown-item {
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  color: rgb(var(--macos-text-primary)) !important;
+}
+
+.macos-dropdown-item:hover {
+  background: rgba(var(--macos-blue), 0.1);
+  color: rgb(var(--macos-blue)) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .macos-spring-hover:hover {
+    transform: none;
+  }
+  
+  .macos-spring-tap:active {
+    transform: scale(0.96);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .macos-spring-hover,
+  .macos-spring-tap,
+  .macos-tab,
+  .macos-dropdown,
+  .macos-card-interactive {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .macos-spring-hover:hover,
+  .macos-card-interactive:hover {
+    transform: none !important;
+  }
+}

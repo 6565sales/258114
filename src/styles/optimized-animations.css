@@ -1,0 +1,264 @@
+
+/* Optimized Animations - macOS Style */
+
+/* Animation Variables */
+:root {
+  --animation-duration: 0.2s;
+  --animation-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --sidebar-width: 3rem;
+  --sidebar-width-expanded: 12rem;
+}
+
+/* Performance optimizations */
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Basic Fade Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+}
+
+/* Spring Animation */
+@keyframes spring-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fade-in var(--animation-duration) var(--animation-easing) forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out var(--animation-duration) var(--animation-easing) forwards;
+}
+
+.animate-spring-in {
+  animation: spring-in 0.4s var(--animation-easing) forwards;
+}
+
+/* Hover Effects */
+.hover-scale {
+  transition: transform var(--animation-duration) var(--animation-easing);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02) translateY(-2px);
+}
+
+/* Spring Effect */
+.spring-tap {
+  transition: transform 0.1s ease-out;
+}
+
+.spring-tap:active {
+  transform: scale(0.98);
+}
+
+/* Lift Effect */
+.hover-lift {
+  transition: all var(--animation-duration) var(--animation-easing);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--macos-shadow);
+}
+
+/* Glass morphism animation */
+.glass-animate {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-animate:hover {
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 16px 48px var(--macos-shadow);
+}
+
+/* Layout Classes */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.content-area {
+  flex: 1;
+  overflow: auto;
+}
+
+/* Sidebar Optimizations */
+.sidebar-compact {
+  width: var(--sidebar-width);
+  transition: width 0.3s var(--animation-easing);
+}
+
+.sidebar-compact.expanded {
+  width: var(--sidebar-width-expanded);
+}
+
+/* Stagger Animation */
+.macos-stagger-children > * {
+  animation: fade-in 0.3s var(--animation-easing) forwards;
+  opacity: 0;
+}
+
+.macos-stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.macos-stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+.macos-stagger-children > *:nth-child(3) { animation-delay: 200ms; }
+.macos-stagger-children > *:nth-child(4) { animation-delay: 300ms; }
+.macos-stagger-children > *:nth-child(5) { animation-delay: 400ms; }
+.macos-stagger-children > *:nth-child(6) { animation-delay: 500ms; }
+
+/* Page Transitions */
+.page-transition {
+  animation: spring-in 0.5s var(--animation-easing) forwards;
+}
+
+/* Pulse Animation */
+@keyframes macos-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+.macos-pulse {
+  animation: macos-pulse 2s infinite var(--animation-easing);
+}
+
+/* Performance Optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Chart animations */
+.chart-enter {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.chart-bar {
+  transition: all 0.3s ease-out;
+}
+
+.chart-bar:hover {
+  filter: brightness(1.1);
+  transform: scaleY(1.02);
+}
+
+/* Modal animations */
+.modal-backdrop {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
+.modal-content {
+  animation: spring-in 0.3s var(--animation-easing) forwards;
+}
+
+/* Button ripple effect */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  pointer-events: none;
+}
+
+.ripple-effect:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-out,
+  .animate-spring-in,
+  .hover-scale,
+  .spring-tap,
+  .hover-lift,
+  .glass-animate,
+  .chart-enter,
+  .chart-bar,
+  .modal-backdrop,
+  .modal-content,
+  .macos-pulse,
+  .ripple-effect::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .hover-scale:hover,
+  .hover-lift:hover {
+    transform: none !important;
+  }
+  
+  .sidebar-compact {
+    transition: none !important;
+  }
+  
+  .macos-stagger-children > * {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .hover-scale:hover,
+  .hover-lift:hover,
+  .glass-animate:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
